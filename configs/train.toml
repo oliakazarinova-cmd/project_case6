@@ -1,0 +1,8 @@
+[training]
+data = "data/raw_data.csv"
+output = "artifacts"
+random_state = 8
+test_size = 0.2
+cv_folds = 5
+C = 1.0
+max_iter = 2000

@@ -1,31 +1,42 @@
+[project]
+name = "cirrhosis-prediction"
+version = "0.1.0"
+description = "Reproducible educational cirrhosis classification pipeline"
+authors = [{name = "Cirrhosis Prediction Team"}]
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "numpy>=1.26,<3.0",
+    "pandas>=2.2,<3.0",
+    "scikit-learn>=1.5,<1.8",
+    "joblib>=1.4,<2.0",
+]
+
+[tool.poetry]
+packages = [{include = "cirrhosis_prediction", from = "src"}]
+
+[tool.poetry.group.dev.dependencies]
+black = "25.11.0"
+isort = "7.0.0"
+flake8 = "7.3.0"
+pre-commit = "4.3.0"
+pytest = ">=8.3,<9.0"
+
+[project.scripts]
+cirrhosis-train = "cirrhosis_prediction.train:main"
+cirrhosis-predict = "cirrhosis_prediction.predict:main"
+
+[build-system]
+requires = ["poetry-core>=2.0,<3.0"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.black]
 line-length = 89
-target-version = ['py310']
-include = '\.py$'
-exclude = '''
-/(
-    \.eggs
-  | \.git
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
-  | notebooks
-  | data
-)/
-'''
+target-version = ["py311"]
 
 [tool.isort]
-multi_line_output = 3
-include_trailing_comma = true
-force_grid_wrap = 0
-use_parentheses = true
+profile = "black"
 line_length = 89
 
 [tool.pytest.ini_options]
-markers = [
-    "local: marks tests that don't work remotely, e.g. those that require data",
-]
+testpaths = ["tests"]

@@ -1,30 +1,18 @@
 repos:
-  - repo: https://github.com/ambv/black
-    rev: 25.11.0
+  - repo: local
     hooks:
       - id: black
-        language_version: python3
+        name: black
+        entry: poetry run black
+        language: system
         types: [python]
-        stages: [pre-commit]
-        always_run: true
-        args: ["--config", "pyproject.toml", "."]
-
-  - repo: https://github.com/timothycrosley/isort
-    rev: 7.0.0
-    hooks:
       - id: isort
-        language_version: python3
+        name: isort
+        entry: poetry run isort
+        language: system
         types: [python]
-        stages: [pre-commit]
-        always_run: true
-        args: ["."]
-
-  - repo: https://github.com/pycqa/flake8
-    rev: 7.3.0
-    hooks:
       - id: flake8
-        language_version: python3
+        name: flake8
+        entry: poetry run flake8
+        language: system
         types: [python]
-        stages: [pre-commit]
-        always_run: true
-        args: ["--config", ".flake8", "."]

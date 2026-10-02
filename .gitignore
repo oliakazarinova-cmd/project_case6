@@ -23,3 +23,9 @@ dist/
 # Файлы IDE
 .idea
 .vscode
+
+# Local environments and generated outputs
+.venv/
+artifacts/
+.pytest_cache/
+build/
